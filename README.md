@@ -66,12 +66,6 @@ flowchart TB
 
 ## 🚀 快速开始
 
-建议使用项目指定的 Conda 环境：
-
-```powershell
-conda activate DXapp101
-```
-
 安装依赖：
 
 ```powershell
@@ -270,8 +264,3 @@ python -m pytest tests -q
 - 数据库是否有迁移
 - 是否影响 Demo 数据
 - 已运行的测试命令
-
-## 📄 License
-
-当前仓库尚未附带正式开源许可证。如需对外发布，建议补充 `LICENSE` 文件后再公开分发。
-
