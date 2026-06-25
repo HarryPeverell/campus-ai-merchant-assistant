@@ -34,6 +34,46 @@ This repository is a runnable MVP demo. It includes a built-in sample shop calle
 - 🔐 Local-first data storage with encrypted API key storage.
 - 🧪 Automated tests for core business logic and data migration.
 
+## 📸 Screenshots
+
+The screenshots are stored in the `picture/` directory. They show the main pages of the current MVP demo. The image size is 1442 × 932, suitable for desktop demos around 1440px wide.
+
+### Dashboard
+
+The Dashboard is designed for the first daily check-in. It brings together revenue, visitors, gross profit, trial status, weather impact, daily tasks, and AI daily advice.
+
+<img src="./picture/软件首页.png" alt="Campus Merchant AI Growth Assistant Dashboard" width="100%">
+
+### Content Generation
+
+The content generation page uses a left-side parameter form, a right-side preview area, and a history table below. Users can choose channel, audience, weather, promoted item/package, offer, and style to generate copy-ready plain text.
+
+<img src="./picture/内容生成.png" alt="Content Generation Page" width="100%">
+
+### Campaign Planning
+
+The campaign planning page generates executable promotion plans based on traffic goals, promoted packages, publishing windows, and discount rules. The discount builder supports cash-off, threshold discount, percentage discount, fixed package price, gifts, and limited-time coupons.
+
+<img src="./picture/活动策划.png" alt="Campaign Planning Page" width="100%">
+
+### Analytics Overview
+
+The analytics page supports 7-day, 14-day, 30-day, and custom date ranges for revenue, costs, gross profit, visitors, and coupon redemptions. Line charts support hover details for date and exact value.
+
+<img src="./picture/数据分析.png" alt="Analytics Overview Page" width="100%">
+
+### Package and Campaign Performance
+
+The extended analytics view compares campaign performance, package performance, AI review suggestions, and daily finance records, helping merchants identify which packages and promotions actually convert.
+
+<img src="./picture/数据分析2.png" alt="Package and Campaign Performance Page" width="100%">
+
+### Review Reply Assistant
+
+The review reply page supports positive reviews, negative reviews, inquiries, and delivery/status complaints. Negative review replies prioritize apology, action plan, and private follow-up guidance.
+
+<img src="./picture/评论回复.png" alt="Review Reply Page" width="100%">
+
 ## 🖼 Product Workflow
 
 ```mermaid
@@ -274,4 +314,3 @@ When submitting changes, please include:
 ## 📄 License
 
 No formal open-source license is included yet. Add a `LICENSE` file before public distribution.
-
