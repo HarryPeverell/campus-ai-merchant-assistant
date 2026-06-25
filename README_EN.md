@@ -35,9 +35,6 @@ This repository is a runnable MVP demo. It includes a built-in sample shop calle
 - 🧪 Automated tests for core business logic and data migration.
 
 ## 📸 Screenshots
-
-The screenshots are stored in the `picture/` directory. They show the main pages of the current MVP demo. The image size is 1442 × 932, suitable for desktop demos around 1440px wide.
-
 ### Dashboard
 
 The Dashboard is designed for the first daily check-in. It brings together revenue, visitors, gross profit, trial status, weather impact, daily tasks, and AI daily advice.
