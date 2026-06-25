@@ -1,67 +1,73 @@
 # 校园商家 AI 增长助理
 
-校园商家 AI 增长助理是一款面向学校周边小吃店、奶茶店、快餐店等小微商家的本地桌面运营工具。项目使用 PyQt5 + SQLite 实现，主打“老板每天打开软件，就知道今天怎么卖、发什么、复盘什么”。
+<p align="center">
+  <strong>面向校园周边小微商家的本地 AI 运营工作台</strong>
+</p>
 
-当前版本是可运行的 MVP Demo，内置“东门小吃铺”示例数据，支持天气经营建议、AI 文案生成、活动策划、数据分析、评论回复和店铺设置。
+<p align="center">
+  <img alt="Python" src="https://img.shields.io/badge/Python-3.9%2B-3776AB?logo=python&logoColor=white">
+  <img alt="PyQt5" src="https://img.shields.io/badge/UI-PyQt5-41CD52">
+  <img alt="SQLite" src="https://img.shields.io/badge/Database-SQLite-003B57?logo=sqlite&logoColor=white">
+  <img alt="AI" src="https://img.shields.io/badge/AI-OpenAI%20Compatible-111827">
+  <img alt="Platform" src="https://img.shields.io/badge/Platform-Windows-0078D4?logo=windows&logoColor=white">
+</p>
 
-## 主要功能
+<p align="center">
+  <a href="#中文说明">中文</a> ·
+  <a href="#english">English</a>
+</p>
 
-- Dashboard
-  - 展示今日收入、到店人数、毛利和试用状态。
-  - 展示每日日期、城市、实时/演示天气、温度范围、降水概率、风速和动态经营影响。
-  - 今日任务支持勾选完成、自定义新增和删除。
-  - AI 今日建议会结合天气、菜单套餐、活动和近 7 日经营数据生成。
+---
 
-- 内容生成
-  - 支持今日促销方案、微信群文案、朋友圈文案、小红书标题与正文、抖音脚本、海报文案、评论回复、私域复购和会员召回。
-  - 未配置 API Key 时自动使用本地 Mock 演示结果。
-  - 已在 Prompt 和输出清洗中限制 Markdown / LaTeX 格式，生成结果以可直接复制发送的纯文本为主。
+## 中文说明
 
-- 活动策划
-  - 支持活动目标、主推套餐、发布时间和优惠规则设置。
-  - 优惠规则包括立减、满减、折扣、固定套餐价、第二件优惠、赠品、限时券等。
-  - 活动方案可保存，并参与后续数据分析和 AI 复盘。
+校园商家 AI 增长助理是一款使用 PyQt5 + SQLite 构建的 Windows 本地桌面应用，面向学校周边的小吃店、奶茶店、快餐店等小微商家老板或店长。
 
-- 数据分析
-  - 支持每日收入、食材成本、人工成本、推广成本、优惠成本、其他成本、到店人数和核销数录入。
-  - 自动计算总成本、毛利润、毛利率、客单价、单客成本和核销率。
-  - 支持近 7 / 14 / 30 天和自定义时间范围统计。
-  - 折线图支持鼠标悬停查看日期、指标和具体数值。
-  - 支持套餐表现录入和活动/套餐效果对比。
+它把“天气变化、菜单套餐、活动策划、营销文案、评论回复、收支复盘”放在同一个轻量工作台中，帮助商家快速判断今天卖什么、怎么发、效果怎么样。
 
-- 评论回复
-  - 支持好评、差评、咨询、催单等场景。
-  - 差评回复会包含致歉、处理方案和私聊引导。
+当前项目是一个完整可运行的 MVP Demo，默认内置“东门小吃铺”示例数据，可用于课程作业、创业项目验证、产品 Demo 或技术面试展示。
 
-- 设置
-  - 支持店铺基础信息、菜单、套餐、学校与天气、AI API 配置。
-  - 支持 DeepSeek、OpenAI 和其他 OpenAI Chat Completions 兼容接口。
-  - API Key 加密保存在本机，不在界面明文回显。
+### ✨ 产品亮点
 
-## Demo 数据
+- 🧭 Dashboard：聚合天气、经营指标、今日任务和 AI 今日建议。
+- 🌦 动态天气经营影响：根据日期、天气、温度、降水概率和风速生成经营提示。
+- ✍️ AI 内容生成：支持微信群、朋友圈、小红书、抖音、海报、评论回复、私域复购等场景。
+- 🧾 活动策划：支持灵活优惠规则，包括立减、满减、折扣、固定套餐价、赠品、限时券等。
+- 📊 数据分析：支持收入、成本、到店人数、核销数、套餐表现和活动效果复盘。
+- 🔐 本地数据优先：SQLite 存储在用户本机，API Key 加密保存。
+- 🧪 可测试：项目包含自动化测试，覆盖核心业务逻辑和数据迁移。
 
-默认账号：
+### 🖼 产品工作流
 
-```text
-账号：admin
-密码：admin
+```mermaid
+flowchart LR
+    A[店铺资料与菜单] --> B[Dashboard 今日判断]
+    C[天气与经营影响] --> B
+    D[近 7 日经营数据] --> B
+    B --> E[AI 今日建议]
+    E --> F[活动策划]
+    E --> G[内容生成]
+    F --> H[发布与执行]
+    G --> H
+    H --> I[数据分析与复盘]
+    I --> B
 ```
 
-首次启动时，`admin` 会初始化为“东门小吃铺”演示数据：
+### 🧱 技术架构
 
-- 店铺地址：北京市海淀区学院路
-- 主营业务：炸鸡、烤肠、饭团、关东煮、饮品
-- 单品：香酥炸鸡排、烤肠、饭团、关东煮三件套、柠檬茶、热豆浆
-- 套餐：
-  - 鸡排柠檬茶套餐
-  - 饭团关东煮豆浆套餐
-  - 烤肠饭团套餐
-  - 关东煮豆浆套餐
-- 内置近 7 天收支数据、套餐表现数据、活动记录和今日任务。
+```mermaid
+flowchart TB
+    UI[PyQt5 Desktop UI] --> Store[V2Database / SQLite]
+    UI --> AIService[AIService]
+    UI --> Weather[WeatherService]
+    AIService --> Prompt[Prompt Templates]
+    AIService --> Mock[Local Mock Fallback]
+    AIService --> API[OpenAI Compatible Chat Completions]
+    Weather --> OpenMeteo[Open-Meteo / Manual Weather]
+    Store --> LocalData[(LocalAppData SQLite)]
+```
 
-如需恢复演示数据，可在“设置 -> 店铺信息”中点击“重置为东门小吃铺 Demo 数据”。
-
-## 环境要求
+### 🚀 快速开始
 
 推荐使用项目指定的 Conda 环境：
 
@@ -69,98 +75,153 @@
 DXapp101
 ```
 
-Python 运行路径示例：
-
-```powershell
-D:\Anaconda\envs\DXapp101\python.exe
-```
-
-主要依赖包括：
-
-- PyQt5
-- requests
-- pyqtgraph
-- openpyxl
-- PyMuPDF
-- python-docx
-- rapidocr_onnxruntime
-- beautifulsoup4
-- pytest
-- pytest-qt
-
-## 安装依赖
-
-在项目根目录执行：
+安装依赖：
 
 ```powershell
 D:\Anaconda\envs\DXapp101\python.exe -m pip install -r requirements.txt
 ```
 
-如果依赖已安装，可以跳过此步骤。
-
-## 启动软件
-
-推荐直接运行：
+启动应用：
 
 ```powershell
 .\run.bat
 ```
 
-也可以手动运行：
+也可以直接运行：
 
 ```powershell
 D:\Anaconda\envs\DXapp101\python.exe app.py
 ```
 
-## AI API 配置
+启动链路：
 
-进入“设置 -> AI API 配置”。
+```text
+run.bat -> app.py -> app_v2.py
+```
+
+说明：`app_v2.py` 是当前主程序；`app.py` 保留为兼容入口。
+
+### 🔑 默认账号
+
+```text
+账号：admin
+密码：admin
+```
+
+首次启动时，`admin` 账号会初始化为“东门小吃铺”Demo 数据。
+
+### 🍢 内置 Demo 数据
+
+| 类型 | 内容 |
+| --- | --- |
+| 店铺 | 东门小吃铺 |
+| 地址 | 北京市海淀区学院路 |
+| 主营 | 炸鸡、烤肠、饭团、关东煮、饮品 |
+| 单品 | 香酥炸鸡排、烤肠、饭团、关东煮三件套、柠檬茶、热豆浆 |
+| 套餐 | 鸡排柠檬茶套餐、饭团关东煮豆浆套餐、烤肠饭团套餐、关东煮豆浆套餐 |
+| 数据 | 近 7 天收支、套餐表现、活动记录、今日任务 |
+
+如需恢复演示数据，可在应用内进入：
+
+```text
+设置 -> 店铺信息 -> 重置为东门小吃铺 Demo 数据
+```
+
+### 🤖 AI API 配置
+
+应用支持 OpenAI Chat Completions 兼容接口。进入：
+
+```text
+设置 -> AI API 配置
+```
 
 DeepSeek 默认配置：
 
-```text
-Provider: DeepSeek
-Base URL: https://api.deepseek.com
-Model Name: deepseek-chat
-```
-
-填写 API Key 后点击“测试连接”，成功后保存配置即可。
+| 字段 | 值 |
+| --- | --- |
+| Provider | DeepSeek |
+| Base URL | https://api.deepseek.com |
+| Model Name | deepseek-chat |
 
 说明：
 
-- API 接口使用 OpenAI 兼容的 `POST /chat/completions`。
-- 未配置 API Key 时，系统使用本地 Mock AI，保证 Demo 可正常演示。
-- API 调用失败时，会显示演示模式并回退到本地结果。
-- 生成内容会尽量保持纯文本，避免 Markdown / LaTeX 格式。
+- 未配置 API Key 时，系统自动使用本地 Mock AI，保证 Demo 可运行。
+- 配置 API Key 后，可点击“测试连接”验证接口。
+- API Key 使用本机加密存储，不在界面明文回显。
+- Prompt 和输出清洗已限制 Markdown / LaTeX 格式，生成结果以可复制纯文本为主。
 
-## 天气说明
+### 🌦 天气能力
 
-默认天气服务预留 Open-Meteo 接口。
+Dashboard 支持实时天气刷新和手动天气录入。
 
-Dashboard 支持：
+天气经营影响会根据以下字段动态变化：
 
-- 刷新实时天气。
-- 手动更新天气。
-- 根据天气文本、温度、降水概率和风速动态生成经营影响。
+- 日期
+- 城市
+- 天气文本
+- 当前温度
+- 今日最高/最低温
+- 降水概率
+- 风速
 
-例如：
+示例策略：
 
-- 雨天：建议热食、热饮、外带包装和提前备餐。
-- 高温：建议冷饮、柠檬茶和清爽小吃。
-- 降温：建议关东煮、热豆浆和热食套餐。
-- 大风：建议提前通过微信群/朋友圈触达，主推快速打包套餐。
+| 天气 | 经营建议 |
+| --- | --- |
+| 雨天 | 主推热食、热饮、外带包装，减少排队等待 |
+| 高温 | 主推冷饮、柠檬茶和清爽小吃 |
+| 降温 | 主推关东煮、热豆浆和热食套餐 |
+| 大风 | 提前在微信群/朋友圈触达，主推快速打包套餐 |
 
-## 本地数据位置
+### 📊 数据分析能力
 
-应用数据默认保存在当前 Windows 用户的 LocalAppData 目录：
+支持录入并分析：
+
+- 总收入
+- 食材成本
+- 人工成本
+- 平台推广成本
+- 优惠成本
+- 其他成本
+- 到店人数
+- 优惠券核销数
+- 套餐表现
+- 活动效果
+
+自动计算：
+
+- 总成本
+- 毛利润
+- 毛利率
+- 客单价
+- 单客成本
+- 核销率
+
+折线图支持鼠标悬停查看每个数据点的日期、指标和数值。
+
+### 📁 项目结构
 
 ```text
-%LOCALAPPDATA%\CampusGrowthAssistant
+.
+├── app.py                         # 兼容入口，转发到 app_v2.main()
+├── app_v2.py                      # 当前主界面与页面逻辑
+├── run.bat                        # Windows 启动脚本
+├── requirements.txt               # Python 依赖
+├── README.md                      # 项目说明
+├── campus_growth/
+│   ├── core.py                    # 用户、设置、基础数据库和本机加密
+│   ├── v2_store.py                # V2 数据模型、迁移、Demo 数据和业务读写
+│   ├── ai_service.py              # 统一 AI 调用、Mock 回退和输出清洗
+│   ├── prompt_templates.py        # Prompt 模板
+│   └── services/
+│       ├── weather.py             # 天气接口、天气标签和经营影响
+│       ├── ai_request.py          # OpenAI 兼容请求
+│       ├── calendar_service.py    # 校历文件解析能力
+│       └── calendar_analysis.py   # 校历规则/AI 分析
+└── tests/                         # 自动化测试
 ```
 
-本项目不提供云同步，不会主动上传店铺数据。只有在刷新天气或配置 AI API 后，才会发起对应网络请求。
-
-## 测试
+### 🧪 测试
 
 运行全部测试：
 
@@ -170,50 +231,225 @@ D:\Anaconda\envs\DXapp101\python.exe -m pytest tests -q
 
 当前测试覆盖：
 
-- 默认账号和 Demo 数据初始化。
-- 天气经营影响动态变化。
-- Prompt 和 AI 输出清洗。
-- 今日任务新增、删除和完成状态。
-- 财务指标和日期范围过滤。
-- 套餐表现数据。
-- 活动优惠规则保存。
-- 数据分析图表基础逻辑。
+- 默认账号与 Demo 初始化
+- 数据库迁移
+- 天气经营影响
+- AI Prompt 和输出清洗
+- 今日任务新增、删除、完成状态
+- 财务指标计算
+- 日期范围筛选
+- 套餐表现数据
+- 活动优惠规则保存
 
-## 项目结构
+### 🔐 数据与隐私
+
+- 默认数据保存在当前 Windows 用户的 LocalAppData 目录：
 
 ```text
-.
-├── app.py                         # 程序入口，当前转入 app_v2
-├── app_v2.py                      # V2/V2.1 主界面与页面逻辑
-├── run.bat                        # Windows 启动脚本
-├── requirements.txt               # Python 依赖
-├── campus_growth/
-│   ├── core.py                    # 基础数据库、用户、设置与加密
-│   ├── v2_store.py                # V2 数据模型、迁移、Demo 数据与业务读写
-│   ├── ai_service.py              # 统一 AI 调用与 Mock 回退
-│   ├── prompt_templates.py        # Prompt 模板
-│   └── services/
-│       ├── weather.py             # 天气接口、天气标签和经营影响
-│       ├── ai_request.py          # OpenAI 兼容 Chat Completions 请求
-│       └── calendar_service.py    # 校历文件解析能力
-└── tests/                         # 自动化测试
+%LOCALAPPDATA%\CampusGrowthAssistant
 ```
 
-## 常见问题
+- 本项目不提供云同步。
+- 店铺数据、财务数据和生成历史默认只保存在本机。
+- 只有刷新天气或配置 AI API 后，才会发起对应网络请求。
+- API Key 使用本机加密方式保存，界面不会明文回显。
 
-### 1. 没有 API Key 能不能运行？
+### 🧩 开发规范
 
-可以。未配置 API Key 时，软件会进入演示模式，使用本地 Mock AI 生成内容。
+建议贡献代码前执行：
 
-### 2. 生成内容里为什么仍可能出现特殊符号？
+```powershell
+D:\Anaconda\envs\DXapp101\python.exe -m py_compile app_v2.py campus_growth\v2_store.py campus_growth\ai_service.py campus_growth\prompt_templates.py campus_growth\services\weather.py
+D:\Anaconda\envs\DXapp101\python.exe -m pytest tests -q
+```
 
-当前已在 Prompt 和清洗逻辑中禁止 Markdown / LaTeX 常见格式。如果真实模型仍返回异常格式，复制前可以在结果框里手动编辑；后续可继续加强清洗规则。
+代码约定：
 
-### 3. 如何重置 Demo？
+- 本地文件编辑优先保持小步提交。
+- 业务逻辑优先放入 `campus_growth/` 模块，避免全部堆在 UI 层。
+- AI 调用统一通过 `AIService`，不要在页面里直接拼 API 请求。
+- Prompt 统一维护在 `prompt_templates.py`。
+- 数据结构变更通过 `v2_store.py` 做幂等迁移。
 
-进入“设置 -> 店铺信息”，点击“重置为东门小吃铺 Demo 数据”。
+### 🛣 Roadmap
 
-### 4. 如何切换真实 AI？
+- 接入更完整的天气服务配置。
+- 增强校历导入后的运营节点识别。
+- 增加活动 ROI、套餐毛利和时段转化分析。
+- 支持导出经营日报。
+- 支持更多本地模型或私有化模型接口。
 
-进入“设置 -> AI API 配置”，选择 DeepSeek / OpenAI / 其他兼容接口，填写 Base URL、Model 和 API Key，测试连接成功后保存。
+### 🤝 Contributing
+
+欢迎基于当前 MVP 继续扩展。建议提交改动时说明：
+
+- 改动目标
+- 涉及页面或模块
+- 数据库是否有迁移
+- 是否影响 Demo 数据
+- 已运行的测试命令
+
+### 📄 License
+
+当前仓库尚未附带正式开源许可证。如需对外发布，建议补充 `LICENSE` 文件后再公开分发。
+
+---
+
+## English
+
+Campus Merchant AI Growth Assistant is a local Windows desktop application built with PyQt5 and SQLite. It is designed for small merchants around universities, such as snack shops, milk tea stores, fast-food restaurants, and campus-side convenience businesses.
+
+The product combines weather-aware operation suggestions, menu/package management, campaign planning, AI copywriting, customer review replies, and business analytics into a lightweight local dashboard.
+
+This repository is a runnable MVP demo. It includes a built-in sample shop called “Dongmen Snack Shop”, making it suitable for product validation, coursework, startup demos, and technical interviews.
+
+### ✨ Highlights
+
+- 🧭 Dashboard for daily metrics, weather impact, tasks, and AI recommendations.
+- 🌦 Dynamic weather impact based on date, city, weather, temperature, precipitation, and wind speed.
+- ✍️ AI-powered copy generation for WeChat groups, Moments, Xiaohongshu, Douyin, posters, review replies, private traffic, and member recall.
+- 🧾 Flexible campaign planning with discount rules.
+- 📊 Finance analytics with revenue, costs, profit, visitors, coupon usage, package performance, and campaign comparison.
+- 🔐 Local-first data storage with encrypted API key storage.
+- 🧪 Automated tests for core business logic and data migration.
+
+### 🖼 Product Workflow
+
+```mermaid
+flowchart LR
+    A[Store Profile and Menu] --> B[Dashboard]
+    C[Weather Impact] --> B
+    D[Recent Business Data] --> B
+    B --> E[AI Daily Advice]
+    E --> F[Campaign Planning]
+    E --> G[Content Generation]
+    F --> H[Publish and Execute]
+    G --> H
+    H --> I[Analytics and Review]
+    I --> B
+```
+
+### 🧱 Architecture
+
+```mermaid
+flowchart TB
+    UI[PyQt5 Desktop UI] --> Store[V2Database / SQLite]
+    UI --> AIService[AIService]
+    UI --> Weather[WeatherService]
+    AIService --> Prompt[Prompt Templates]
+    AIService --> Mock[Local Mock Fallback]
+    AIService --> API[OpenAI-Compatible Chat Completions]
+    Weather --> OpenMeteo[Open-Meteo / Manual Weather]
+    Store --> LocalData[(LocalAppData SQLite)]
+```
+
+### 🚀 Quick Start
+
+Recommended Conda environment:
+
+```text
+DXapp101
+```
+
+Install dependencies:
+
+```powershell
+D:\Anaconda\envs\DXapp101\python.exe -m pip install -r requirements.txt
+```
+
+Start the app:
+
+```powershell
+.\run.bat
+```
+
+Or run manually:
+
+```powershell
+D:\Anaconda\envs\DXapp101\python.exe app.py
+```
+
+Launch chain:
+
+```text
+run.bat -> app.py -> app_v2.py
+```
+
+`app_v2.py` is the current main application. `app.py` is kept as a compatibility entry point.
+
+### 🔑 Default Account
+
+```text
+Username: admin
+Password: admin
+```
+
+On first launch, the `admin` account is initialized with the built-in demo data.
+
+### 🤖 AI API Configuration
+
+Open:
+
+```text
+Settings -> AI API Configuration
+```
+
+Default DeepSeek configuration:
+
+| Field | Value |
+| --- | --- |
+| Provider | DeepSeek |
+| Base URL | https://api.deepseek.com |
+| Model Name | deepseek-chat |
+
+Notes:
+
+- The app uses an OpenAI-compatible `POST /chat/completions` API.
+- Without an API key, it falls back to local mock AI responses.
+- API keys are encrypted locally and are not displayed in plain text.
+- Prompts and output cleanup are designed to avoid Markdown / LaTeX artifacts in generated copy.
+
+### 📊 Analytics
+
+The analytics module supports:
+
+- Daily revenue and cost records
+- Ingredient, labor, promotion, discount, and other costs
+- Visitor count and coupon redemption count
+- Package performance records
+- Campaign comparison
+- Profit and gross margin calculation
+- Interactive line charts with hover details
+
+### 🔐 Data and Privacy
+
+Local data is stored under:
+
+```text
+%LOCALAPPDATA%\CampusGrowthAssistant
+```
+
+The app does not provide cloud sync. Store data, finance records, and generated history remain local by default. Network requests are only made when refreshing weather data or using a configured AI API.
+
+### 🧪 Tests
+
+Run all tests:
+
+```powershell
+D:\Anaconda\envs\DXapp101\python.exe -m pytest tests -q
+```
+
+### 🤝 Contributing
+
+Before submitting changes, please include:
+
+- Objective of the change
+- Affected pages or modules
+- Database migration impact
+- Demo data impact
+- Test commands that were executed
+
+### 📄 License
+
+No formal open-source license is included yet. Add a `LICENSE` file before public distribution.
 

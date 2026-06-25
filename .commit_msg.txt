@@ -1,0 +1,6 @@
+docs: update README and remove legacy PRD file
+
+- Refactor README with comprehensive updates
+- Remove outdated PRD document (content merged into README)
+
+Co-Authored-By: Claude <noreply@anthropic.com>
